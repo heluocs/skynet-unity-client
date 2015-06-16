@@ -10,99 +10,68 @@
 // Generated from: login_message.proto
 namespace login_message
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgRoleLoginRequest")]
-  public partial class CMsgRoleLoginRequest : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgAccountLoginRequest")]
+  public partial class CMsgAccountLoginRequest : global::ProtoBuf.IExtensible
   {
-    public CMsgRoleLoginRequest() {}
+    public CMsgAccountLoginRequest() {}
     
-    private string _nickname;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string nickname
+    private string _account;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string account
     {
-      get { return _nickname; }
-      set { _nickname = value; }
+      get { return _account; }
+      set { _account = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RoleInfo")]
-  public partial class RoleInfo : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgAccountLoginResponse")]
+  public partial class CMsgAccountLoginResponse : global::ProtoBuf.IExtensible
   {
-    public RoleInfo() {}
+    public CMsgAccountLoginResponse() {}
     
-    private long _id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public long id
+    private long _accountid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"accountid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long accountid
     {
-      get { return _id; }
-      set { _id = value; }
-    }
-    private string _nickname;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string nickname
-    {
-      get { return _nickname; }
-      set { _nickname = value; }
-    }
-    private int _level;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int level
-    {
-      get { return _level; }
-      set { _level = value; }
+      get { return _accountid; }
+      set { _accountid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgRoleLoginResponse")]
-  public partial class CMsgRoleLoginResponse : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgAccountRegistRequest")]
+  public partial class CMsgAccountRegistRequest : global::ProtoBuf.IExtensible
   {
-    public CMsgRoleLoginResponse() {}
+    public CMsgAccountRegistRequest() {}
     
-    private readonly global::System.Collections.Generic.List<RoleInfo> _role = new global::System.Collections.Generic.List<RoleInfo>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"role", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<RoleInfo> role
+    private string _account;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string account
     {
-      get { return _role; }
-    }
-  
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgRoleRegistRequest")]
-  public partial class CMsgRoleRegistRequest : global::ProtoBuf.IExtensible
-  {
-    public CMsgRoleRegistRequest() {}
-    
-    private string _nickname;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string nickname
-    {
-      get { return _nickname; }
-      set { _nickname = value; }
+      get { return _account; }
+      set { _account = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgRoleRegistResponse")]
-  public partial class CMsgRoleRegistResponse : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CMsgAccountRegistResponse")]
+  public partial class CMsgAccountRegistResponse : global::ProtoBuf.IExtensible
   {
-    public CMsgRoleRegistResponse() {}
+    public CMsgAccountRegistResponse() {}
     
-    private RoleInfo _role;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"role", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public RoleInfo role
+    private long _accountid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"accountid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long accountid
     {
-      get { return _role; }
-      set { _role = value; }
+      get { return _accountid; }
+      set { _accountid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

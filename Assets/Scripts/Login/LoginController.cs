@@ -29,25 +29,38 @@ public class LoginController {
 
     public void SendLoginRequest(string account)
     {
-        CMsgRoleLoginRequest request = new CMsgRoleLoginRequest();
-        request.nickname = account;
+        CMsgAccountLoginRequest request = new CMsgAccountLoginRequest();
+        request.account = account;
 
         MemoryStream stream = new MemoryStream();
-        Serializer.Serialize<CMsgRoleLoginRequest>(stream, request);
+        Serializer.Serialize<CMsgAccountLoginRequest>(stream, request);
 
-        NetManager.Instance.Send(Message.MSG_ROLE_LOGIN_REQUEST_C2S, stream);
+        NetManager.Instance.Send(Message.MSG_ACCOUNT_LOGIN_REQUEST_C2S, stream);
     }
 
-    private void processRoleLoginResponse(MemoryStream stream)
-    {        
-        CMsgRoleLoginResponse response = ProtoBuf.Serializer.Deserialize<CMsgRoleLoginResponse>(stream);
-        List<RoleInfo> roles = response.role;
-        Debug.Log("---role number " + roles.Count);
-        foreach(RoleInfo role in roles)
-        {
-            Debug.Log("---" + role.nickname);
-            Debug.Log("---" + role.level);
-        }
+    public void SendRegistRequest(string account)
+    {
+        CMsgAccountRegistRequest request = new CMsgAccountRegistRequest();
+        request.account = account;
+
+        MemoryStream stream = new MemoryStream();
+        Serializer.Serialize<CMsgAccountRegistRequest>(stream, request);
+
+        NetManager.Instance.Send(Message.MSG_ACCOUNT_REGIST_REQUEST_C2S, stream);
+    }
+
+    private void processAccountLoginResponse(MemoryStream stream)
+    {
+        CMsgAccountLoginResponse response = ProtoBuf.Serializer.Deserialize<CMsgAccountLoginResponse>(stream);
+        long accountid = response.accountid;
+        Debug.Log("-------accountid:" + accountid);
+    }
+
+    private void processAccountRegistResponse(MemoryStream stream)
+    {
+        CMsgAccountRegistResponse response = ProtoBuf.Serializer.Deserialize<CMsgAccountRegistResponse>(stream);
+        long accountid = response.accountid;
+        Debug.Log("-------accountid:" + accountid);
     }
 
     public void OnLoginMessageResponse(int opcode, MemoryStream stream)
@@ -55,8 +68,11 @@ public class LoginController {
         Debug.Log("---login controller receive opcode " + opcode);
         switch(opcode)
         {
-            case Message.MSG_ROLE_LOGIN_RESPONSE_S2C & 0x0000FFFF:
-                processRoleLoginResponse(stream);
+            case Message.MSG_ACCOUNT_LOGIN_RESPONSE_S2C & 0x0000FFFF:
+                processAccountLoginResponse(stream);
+                break;
+            case Message.MSG_ACCOUNT_REGIST_RESPONSE_S2C & 0x0000FFFF:
+                processAccountRegistResponse(stream);
                 break;
             default:
                 break;

@@ -3,6 +3,11 @@ using System.Collections;
 
 public class Main : MonoBehaviour {
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
 	// Use this for initialization
 	void Start () {
         NetManager.Instance.Connect("114.215.210.189", 8888);
