@@ -7,6 +7,17 @@ public class LoginUI : MonoBehaviour {
     private Button loginBtn;
     private Button registBtn;
     private InputField accountFiled;
+    private Text msgText;
+
+    private static LoginUI instance;
+
+    public static LoginUI Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
 
     private enum ButtonType
     {
@@ -14,9 +25,16 @@ public class LoginUI : MonoBehaviour {
         REGIST
     }
 
+    void Awake()
+    {
+        instance = this;
+    }
+
 	// Use this for initialization
 	void Start () {
         accountFiled = GameObject.Find("AccountField").GetComponent<InputField>();
+        msgText = GameObject.Find("MsgText").GetComponent<Text>();
+
         loginBtn = GameObject.Find("LoginBtn").GetComponent<Button>();
         loginBtn.onClick.AddListener(() => OnButtonClick(ButtonType.LOGIN));
         registBtn = GameObject.Find("RegistBtn").GetComponent<Button>();
@@ -38,7 +56,12 @@ public class LoginUI : MonoBehaviour {
         }
         else if(type == ButtonType.REGIST)
         {
-
+            LoginController.Instance.SendRegistRequest(account);
         }
+    }
+
+    public void ShowErrorMsg(string msg)
+    {
+        msgText.text = msg;
     }
 }

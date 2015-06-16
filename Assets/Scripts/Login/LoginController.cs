@@ -54,6 +54,10 @@ public class LoginController {
         CMsgAccountLoginResponse response = ProtoBuf.Serializer.Deserialize<CMsgAccountLoginResponse>(stream);
         long accountid = response.accountid;
         Debug.Log("-------accountid:" + accountid);
+        if(accountid == 0)
+        {
+            LoginUI.Instance.ShowErrorMsg("该用户不存在");
+        }
     }
 
     private void processAccountRegistResponse(MemoryStream stream)

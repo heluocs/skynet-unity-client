@@ -127,13 +127,12 @@ public class NetManager
         byte[] buf = new byte[1024];
         while (mThreadRunning)
         {
-            Debug.Log("-------- tcp read looping-----");
             int len = mStream.Read(buf, 0, buf.Length);
             if (len >= 6)
             {
                 short size = (short)(buf[0] << 8 | buf[1]);
                 int msgno = (int)(buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5]);
-
+                Debug.Log("recv msg: " + Convert.ToString(msgno, 16));
                 //int module = msgno >> 16;
                 //int opcode = msgno & 0x0000FFFF;
 
@@ -154,7 +153,7 @@ public class NetManager
             if(!mSendBuffer.IsEmpty)
             {
                 Protocol protocol = mSendBuffer.Front();
-                Debug.Log("---send---" + protocol.msgno);
+                Debug.Log("send msg: " + Convert.ToString(protocol.msgno, 16));
                 SendMessageToServer(protocol.msgno, protocol.stream);
                 mSendBuffer.PopFront();
             }
