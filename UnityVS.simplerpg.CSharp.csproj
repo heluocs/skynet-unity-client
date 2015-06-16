@@ -153,9 +153,10 @@
     <Compile Include="Assets\3rd\protobuf-net\ServiceModel\XmlProtoSerializer.cs" />
     <Compile Include="Assets\3rd\protobuf-net\SubItemToken.cs" />
     <Compile Include="Assets\3rd\protobuf-net\WireType.cs" />
+    <Compile Include="Assets\Scripts\ApplicationData.cs" />
+    <Compile Include="Assets\Scripts\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\Login\LoginController.cs" />
     <Compile Include="Assets\Scripts\Login\LoginUI.cs" />
-    <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\Message\LoginMessage.cs" />
     <Compile Include="Assets\Scripts\Message\RoleMessage.cs" />
     <Compile Include="Assets\Scripts\Net\CircularBuffer.cs" />

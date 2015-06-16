@@ -58,6 +58,8 @@ public class LoginController {
         {
             LoginUI.Instance.ShowErrorMsg("该用户不存在");
         }
+        ApplicationData.accountid = accountid;
+        Application.LoadLevel("Role");
     }
 
     private void processAccountRegistResponse(MemoryStream stream)
@@ -65,6 +67,8 @@ public class LoginController {
         CMsgAccountRegistResponse response = ProtoBuf.Serializer.Deserialize<CMsgAccountRegistResponse>(stream);
         long accountid = response.accountid;
         Debug.Log("-------accountid:" + accountid);
+        ApplicationData.accountid = accountid;
+        Application.LoadLevel("Role");
     }
 
     public void OnLoginMessageResponse(int opcode, MemoryStream stream)
