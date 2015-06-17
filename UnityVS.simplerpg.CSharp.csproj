@@ -7,7 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B25FA576-AB38-8988-8D62-0564CF0DD1D0}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -161,10 +162,13 @@
     <Compile Include="Assets\Scripts\Message\RoleMessage.cs" />
     <Compile Include="Assets\Scripts\Net\CircularBuffer.cs" />
     <Compile Include="Assets\Scripts\Net\Message.cs" />
+    <Compile Include="Assets\Scripts\Net\MessageController.cs" />
     <Compile Include="Assets\Scripts\Net\MessageDispatcher.cs" />
     <Compile Include="Assets\Scripts\Net\MessageEventArgs.cs" />
     <Compile Include="Assets\Scripts\Net\NetManager.cs" />
     <Compile Include="Assets\Scripts\Net\Protocol.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleController.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rd\protobuf-net\Web\TODO.txt" />

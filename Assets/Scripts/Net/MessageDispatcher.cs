@@ -14,7 +14,7 @@ public class MessageDispatcher
 
     private MessageDispatcher()
     {
-        loginDelegate += LoginController.Instance.OnLoginMessageResponse;
+        loginDelegate += LoginController.Instance.OnMessageResponse;
     }
 
     public static MessageDispatcher Instance
@@ -47,6 +47,9 @@ public class MessageDispatcher
         {
             case Message.MSG_LOGIN_MODULE_NO >> 16:
                 loginDelegate(opcode, stream);
+                break;
+            case Message.MSG_ROLE_MODULE_NO >> 16:
+                RoleController.Instance.OnMessageResponse(opcode, stream);
                 break;
             default:
                 break;

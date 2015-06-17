@@ -14,4 +14,9 @@ public class Message
     public const int MSG_ACCOUNT_REGIST_REQUEST_C2S             = 0x00010003;
     public const int MSG_ACCOUNT_REGIST_RESPONSE_S2C            = 0x00010004;
 
+    public const int MSG_ROLE_MODULE_NO                         = 0x00020000;
+    public const int MSG_ROLE_LIST_REQUEST_C2S                  = 0x00020001;
+    public const int MSG_ROLE_LIST_RESPONSE_S2C                 = 0x00020002;
+    public const int MSG_ROLE_CREATE_REQUEST_C2S                = 0x00020003;
+    public const int MSG_ROLE_CREATE_RESPONSE_S2C               = 0x00020004;
 }

@@ -50,6 +50,11 @@ public class LoginUI : MonoBehaviour {
     {
         string account = accountFiled.text;
         Debug.Log("---"+account+"---");
+        if(account.Equals(""))
+        {
+            ShowErrorMsg("请先输入账号");
+            return;
+        }
         if(type == ButtonType.LOGIN)
         {
             LoginController.Instance.SendLoginRequest(account);
