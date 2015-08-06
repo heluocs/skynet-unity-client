@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using role_message;
+using System.Collections.Generic;
+using ProtoBuf;
 
 public class RoleController : MessageController {
 
@@ -25,7 +28,7 @@ public class RoleController : MessageController {
 
     public void OnMessageResponse(int opcode, MemoryStream stream)
     {
-        Debug.Log("---login controller receive opcode " + opcode);
+        Debug.Log("---role controller receive opcode " + opcode);
         switch (opcode)
         {
             case Message.MSG_ROLE_LIST_RESPONSE_S2C & 0x0000FFFF:
@@ -46,12 +49,21 @@ public class RoleController : MessageController {
 
     private void OnRoleListResponse(MemoryStream stream)
     {
-
+        CMsgRoleListResponse response = ProtoBuf.Serializer.Deserialize<CMsgRoleListResponse>(stream);
+        List<Role> list = response.roles;
+        Debug.Log("---role list---" + list.Capacity);
     }
 
     public void SendRoleListRequest(long accountid)
     {
         Debug.Log("---accountid:" + accountid);
+        CMsgRoleListRequest request = new CMsgRoleListRequest();
+        request.account = accountid.ToString();
+
+        MemoryStream stream = new MemoryStream();
+        Serializer.Serialize<CMsgRoleListRequest>(stream, request);
+
+        NetManager.Instance.Send(Message.MSG_ROLE_LIST_REQUEST_C2S, stream);
     }
 
     public void SendRoleCreateRequest(string nickname)
