@@ -58,7 +58,7 @@ public class RoleController : MessageController {
     {
         Debug.Log("---accountid:" + accountid);
         CMsgRoleListRequest request = new CMsgRoleListRequest();
-        request.account = accountid.ToString();
+        request.accountid = accountid.ToString();
 
         MemoryStream stream = new MemoryStream();
         Serializer.Serialize<CMsgRoleListRequest>(stream, request);
@@ -68,6 +68,14 @@ public class RoleController : MessageController {
 
     public void SendRoleCreateRequest(string nickname)
     {
+        CMsgRoleCreateRequest request = new CMsgRoleCreateRequest();
+        request.nickname = nickname;
+        request.roletype = 1;
+        request.accountid = ApplicationData.accountid.ToString();
 
+        MemoryStream stream = new MemoryStream();
+        Serializer.Serialize<CMsgRoleCreateRequest>(stream, request);
+
+        NetManager.Instance.Send(Message.MSG_ROLE_CREATE_REQUEST_C2S, stream);
     }
 }

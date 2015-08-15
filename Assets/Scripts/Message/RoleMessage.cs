@@ -15,12 +15,12 @@ namespace role_message
   {
     public CMsgRoleListRequest() {}
     
-    private string _account;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string account
+    private string _accountid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"accountid", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string accountid
     {
-      get { return _account; }
-      set { _account = value; }
+      get { return _accountid; }
+      set { _accountid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -87,15 +87,22 @@ namespace role_message
   {
     public CMsgRoleCreateRequest() {}
     
+    private string _accountid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"accountid", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string accountid
+    {
+      get { return _accountid; }
+      set { _accountid = value; }
+    }
     private string _nickname;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string nickname
     {
       get { return _nickname; }
       set { _nickname = value; }
     }
     private int _roletype;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"roletype", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"roletype", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int roletype
     {
       get { return _roletype; }
