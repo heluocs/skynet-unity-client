@@ -118,13 +118,13 @@ namespace role_message
   {
     public CMsgRoleCreateResponse() {}
     
-    private readonly global::System.Collections.Generic.List<Role> _roles = new global::System.Collections.Generic.List<Role>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"roles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Role> roles
+    private Role _role;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"role", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Role role
     {
-      get { return _roles; }
+      get { return _role; }
+      set { _role = value; }
     }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

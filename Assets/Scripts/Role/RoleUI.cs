@@ -1,8 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class RoleUI : MonoBehaviour {
+
+    private static RoleUI instance;
+
+    public static RoleUI Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
 
     private Button createBtn;
     private Button enterBtn;
@@ -13,6 +24,10 @@ public class RoleUI : MonoBehaviour {
     {
         CREATE_ROLE,
         ENTER_GAME
+    }
+
+    void Awake() {
+        instance = this;
     }
 
 	// Use this for initialization
@@ -56,5 +71,10 @@ public class RoleUI : MonoBehaviour {
     public void ShowErrorMsg(string msg)
     {
         this.msgText.text = msg;
+    }
+
+    public void ShowRoleList(List<role_message.Role> roles)
+    {
+
     }
 }

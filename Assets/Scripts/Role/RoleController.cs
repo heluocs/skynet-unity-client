@@ -44,7 +44,9 @@ public class RoleController : MessageController {
 
     private void OnRoleCreateResponse(MemoryStream stream)
     {
-
+        CMsgRoleCreateResponse response = ProtoBuf.Serializer.Deserialize<CMsgRoleCreateResponse>(stream);
+        Role role = response.role;
+        Debug.Log("---role---" + role.nickname);
     }
 
     private void OnRoleListResponse(MemoryStream stream)
@@ -52,6 +54,8 @@ public class RoleController : MessageController {
         CMsgRoleListResponse response = ProtoBuf.Serializer.Deserialize<CMsgRoleListResponse>(stream);
         List<Role> list = response.roles;
         Debug.Log("---role list---" + list.Capacity);
+
+        RoleUI.Instance.ShowRoleList(list);
     }
 
     public void SendRoleListRequest(long accountid)
